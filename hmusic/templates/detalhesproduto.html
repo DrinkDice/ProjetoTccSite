@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+
+
+{% block titulo %}
+Hire Music
+{% endblock %}
+
+{% block content %}
+
+<div class="py-10">
+      <h1>Pagina Produto: {{ object.titulo }}</h1>
+      <p>{{ object }}</p>
+    <p>{{ object.descricao }}</p>
+    <img src="{{ object.thumb.url }}">
+</div>
+
+{% endblock %}
