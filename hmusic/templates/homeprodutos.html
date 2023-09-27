@@ -1,0 +1,19 @@
+{% extends 'base.html'%}
+
+
+{% block titulo %}
+Hire Music
+{% endblock %}
+
+{% block content %}
+<div class="py-10">
+  <h1>Pagina de Produtos</h1>
+  {% for instrumentos in object_list %}
+  <hr>
+  <p>{{ instrumentos }}</p>
+  <p>{{instrumentos.descricao }}</p>
+  <img src="{{ instrumentos.thumb.url }}">
+  {% endfor %}
+</div>
+
+{% endblock %}
