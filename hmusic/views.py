@@ -26,4 +26,12 @@ class Detalhesproduto(DetailView):
     model = Instrumentos
     # object - > 1 item da lista de produtos sera exibido ao selecionar um produto na home page
 
+    def get_context_data(self, **kwargs):
+        context = super(Detalhesproduto, self).get_context_data(**kwargs)
+        #filtrar tabela de filmes de acordo com a categoria
+        self.get_object()
+        produtos_relacionados = Instrumentos.objects.filter(categoria=self.get_object().categoria)[0:5]
+        context["produtos_relacionados"] = produtos_relacionados
+        return context
+
 

@@ -12,6 +12,18 @@ Hire Music
       <p>{{ object }}</p>
     <p>{{ object.descricao }}</p>
     <img src="{{ object.thumb.url }}">
+
+</div>
+<div class="py-10">
+    <h2>Produtos Realcionados:</h2>
+    {% for instrumentos in produtos_relacionados  %}
+    <p>
+        <a href="{% url 'hmcontrol:detalhesproduto' instrumentos.id %}">
+            {{ instrumentos.titulo }}
+        </a>
+    </p>
+
+    {% endfor %}
 </div>
 
 {% endblock %}
