@@ -32,4 +32,4 @@ class Instrumentos(models.Model):
     data_criacao = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.titulo
+        return self.titulo # + " " + self.vendedor
