@@ -10,7 +10,7 @@ Hire Music
   <h1>Pagina de Produtos</h1>
   {% for instrumentos in object_list %}
   <hr>
-  <p>{{ instrumentos }}</p>
+  <a href="{% url 'hmcontrol:detalhesproduto' instrumentos.id %}"><p>{{ instrumentos.titulo }}</p></a>
   <p>{{instrumentos.descricao }}</p>
   <img src="{{ instrumentos.thumb.url }}">
   {% endfor %}
