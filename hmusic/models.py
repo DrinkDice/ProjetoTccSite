@@ -25,6 +25,7 @@ class Instrumentos(models.Model):
     thumb = models.ImageField(upload_to='thumb_instrumentos')
     descricao = models.TextField(max_length=1000)
     categoria = models.CharField(max_length=15, choices=LISTA_CATEGORIAS)
+    visualizacoes = models.IntegerField(default=0)
     #vendedor =
     # vai ser inserido pelo usuario vendedor
     #quantidades =
