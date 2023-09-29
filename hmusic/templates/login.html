@@ -1,29 +1,29 @@
 {% extends 'base.html'%}
+{% load static %}
 
 {% block titulo %}
 Hire Music
 {% endblock %}
 
 {% block content %}
-    <header>
-        <div class="m-full flex justify-center">
-            <form method="post" class="w-6/12 justify-center">
-                  <div class="flex flex-grow items-stretch">
-                      <input>
-                  <button class="bg-red-600 font-medium md:font-normal flex justify-center items-center py-2 px-3 md:px-0 rounded-br-sm rounded-tr-sm md:text-2xl" type="submit">
-                      <span>
-                          Acessar
-                      </span>
-                      <ion-icon name="chevron-forward-outline" class="text-2xl"></ion-icon>
-                  </button>
-                  </div>
-            </form>
+ <section class="min-h-screen bg-black bg-opacity-75 bg-blend-overlay showcase border-gray-600 border-b-8 flex justify-center items-center bg-no-repeat"  style="background-image: url('{% static 'images/Fundo.jpg' %}');">
+        <div class="z-10 h-full py-32 md:py-0 text-gray-100 text-center flex items-center flex-col">
+            <div class="w-full flex justify-center">
+                <div class="flex justify-center items-center w-11/12 md:w-10/12">
+                    <form method="post" class="w-6/12 justify-center">
+                        <div class="flex flex-grow items-stretch">
+                            <input>
+                        <button class="bg-red-600 font-medium md:font-normal flex justify-center items-center py-2 px-3 md:px-0 rounded-br-sm rounded-tr-sm md:text-2xl" type="submit">
+                            <span>
+                                Acessar
+                            </span>
+                            <ion-icon name="chevron-forward-outline" class="text-2xl"></ion-icon>
+                        </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
         </div>
-    </header>
-
-    <section>
-
-    </section>
-
-   
+ </section>
 {% endblock %}

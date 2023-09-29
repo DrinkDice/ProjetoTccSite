@@ -11,13 +11,19 @@
 
 <!-- localde incremtar algo especifico em uma pagina que não seja em todas -->
     {% block head %}
+
     {% endblock %}
+
 </head>
 <body class="bg-black text-gray-100 font-primary">
     {% include 'navbar.html' %}
+
+
     {% block content %}
     {% endblock %}
+
     {% include 'rodape.html' %}
+
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>

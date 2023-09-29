@@ -9,23 +9,8 @@ Hire Music
 
 <div class="py-10">
       <h1>Pagina Produto: {{ object.titulo }}</h1>
-      <p>{{ object }}</p>
-    <p>{{ object.descricao }}</p>
-    <P>Visializações: {{ object.visualizacoes }}</P>
     <img src="{{ object.thumb.url }}">
-
 </div>
-<div class="py-10">
-    <h2>Produtos Realcionados:</h2>
-    {% for instrumentos in produtos_relacionados  %}
-    <p>
-        <a href="{% url 'hmcontrol:detalhesproduto' instrumentos.id %}">
-            {{ instrumentos.titulo }}
-        </a>
-    </p>
-      {% endfor %}
-</div>
-
 <main>
     <section class='bg-primary_black flex justify-center py-10'>
         <div class="p-8 w-10/12 relative">

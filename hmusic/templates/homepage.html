@@ -1,18 +1,181 @@
 {% extends 'base.html'%}
-
+{% load static %}
 
 {% block titulo %}
 Hire Music
 {% endblock %}
 
+{% block head %}
+<style>
+    $itemGrow: 1.2;
+$duration: 250ms;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: #000;
+}
+
+h1 {
+  font-family: Arial;
+  color: red;
+  text-align: center;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3,100%);
+  overflow:hidden;
+  scroll-behavior: smooth;
+
+  section {
+    width: 100%;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    margin: 20px 0;
+
+    .item {
+      padding: 0 2px;
+      transition: $duration all;
+
+      &:hover {
+        margin: 0 40px;
+        transform: scale(1.2);
+      }
+
+    }
+
+    a {
+      position: absolute;
+      color: #fff;
+      text-decoration: none;
+      font-size: 6em;
+      background:rgb(0,0,0);
+      width: 80px;
+      padding: 20px;
+      text-align: center;
+      z-index: 1;
+
+      &:nth-of-type(1) {
+        top:0; bottom:0; left:0;
+        background: linear-gradient(-90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+      }
+      &:nth-of-type(2) {
+        top:0; bottom:0; right: 0;
+        background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+      }
+
+    }
+
+  }
+}
+
+// Remove the arrow for Mobile
+@media only screen and (max-width: 600px) {
+  a.arrow__btn {
+    display:none;
+  }
+}
+</style>
+{% endblock %}
+
 {% block content %}
     <h1>Essa é a homepage do site</h1>
-    <header>
+<main class='bg-primary_black min-h-screen w-full'>
+        <section class="h-screen relative bg-no-repeat pb-8 pl-6 flex items-end bg-cover" style="background-image: url('{% static 'images/Fundo.jpg' %}');">
+            <div>
+                <h2 class="text-6xl font-semibold text-white my-4">
 
-    </header>
-    <div class="py-10">
-        <h2> Destaque Novo </h2>
-        {{ lista_instrumentos_recentes }}
-    </div>
+                </h2>
+                <p class=" w-11/12 md:w-5/12 font-medium text-white my-4">
+                </p>
+            </div>
+        </section>
 
+
+        <section class='bg-primary_black flex justify-center py-10'>
+            <div class="p-8 w-10/12 relative" >
+                <h2 class="text-gray-200 text-2xl font-medium">
+                    Novos Anuncidos
+                </h2>
+                <div class="wrapper">
+                  <section id="section1" class="flex flex-nowrap items-center justify-center space-x-8">
+                    <a href="#section2" class="arrow__btn text-6xl page">‹</a>
+                      {% for instrumentos in lista_instrumentos_recentes %}
+                      {% if forloop.counter < 5%}
+                      <div class="item h-64 w-1/4 m-4">
+                          <a href="{% url 'hmcontrol:detalhesproduto' instrumentos.id %}">
+                            <img src="{{ instrumentos.thumb.url }}" class="rounded-md w-full h-full object-cover">
+                          </a>
+                      </div>
+                      {% endif %}
+                      {% endfor %}
+                        <a href="#section2" class="arrow__btn text-6xl">›</a>
+                  </section>
+                    {% if lista_instrumentos_recentes|length > 4 %}
+                    <section id="section2" class="flex flex-nowrap items-center justify-center">
+                        <a href="#section1" class="arrow__btn text-6xl">‹</a>
+                          {% for instrumentos in lista_instrumentos_recentes %}
+                          {% if forloop.counter > 5%}
+                          <div class="item h-64 w-1/4 m-4">
+                            <a href="{% url 'hmcontrol:detalhesproduto' instrumentos.id %}">
+                                <img src="{{ instrumentos.thumb.url }}" class="rounded-md w-full h-full object-cover">
+                             </a>
+                          </div>
+                          {% endif %}
+                          {% endfor %}
+                        <a href="#section1" class="arrow__btn text-6xl">›</a>
+                    </section>
+                    {% endif %}
+                </div>
+
+
+            </div>
+        </section>
+    
+        <section class='bg-primary_black flex justify-center py-10'>
+            <div class="p-8 w-10/12 relative" >
+                <h2 class="text-gray-200 text-2xl font-medium">
+                    Mais Acessados
+                </h2>
+                <div class="wrapper">
+                  <section id="section1emalta" class="flex flex-nowrap items-center justify-center space-x-8">
+                    <a href="#section2emalta" class="arrow__btn text-6xl page">‹</a>
+                      {% for instrumentos in lista_em_alta %}
+                      {% if forloop.counter < 5%}
+                      <div class="item h-64 w-1/4 m-4">
+                          <a href="{% url 'hmcontrol:detalhesproduto' instrumentos.id %}">
+                            <img src="{{ instrumentos.thumb.url }}" class="rounded-md w-full h-full object-cover">
+                          </a>
+                      </div>
+                      {% endif %}
+                      {% endfor %}
+                        <a href="#section2emalta" class="arrow__btn text-6xl">›</a>
+                  </section>
+                    {% if lista_em_alta|length > 4 %}
+                    <section id="section2emalta" class="flex flex-nowrap items-center justify-center">
+                        <a href="#section1emalta" class="arrow__btn text-6xl">‹</a>
+                          {% for instrumentos in lista_em_alta %}
+                          {% if forloop.counter > 5%}
+                          <div class="item h-64 w-1/4 m-4">
+                            <a href="{% url 'hmcontrol:detalhesproduto' instrumentos.id %}">
+                                <img src="{{ instrumentos.thumb.url }}" class="rounded-md w-full h-full object-cover">
+                             </a>
+                          </div>
+                          {% endif %}
+                          {% endfor %}
+                        <a href="#section1emalta" class="arrow__btn text-6xl">›</a>
+                    </section>
+                    {% endif %}
+                </div>
+
+
+            </div>
+        </section>
+
+</main>
 {% endblock %}
