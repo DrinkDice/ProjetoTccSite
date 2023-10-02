@@ -43,4 +43,17 @@ class Detalhesproduto(DetailView):
         context["produtos_relacionados"] = produtos_relacionados
         return context
 
+class Pesquisar(ListView):
+    template_name = "pesquisar.html"
+    model = Instrumentos
+
+    #editando object_list
+    def get_queryset(self):
+        termo_pesquisa = self.request.GET.get('query')
+        if termo_pesquisa:
+            object_list = Instrumentos.objects.filter(titulo__icontains=termo_pesquisa) #Instrumentos poderia ser mudado para "self.model."
+            return object_list
+        else:
+            return None
+
 

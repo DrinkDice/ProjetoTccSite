@@ -1,7 +1,7 @@
 # url - view - template
 
 from django.urls import path, include
-from .views import HomePage, Login, Homeprodutos, Detalhesproduto
+from .views import HomePage, Login, Homeprodutos, Detalhesproduto, Pesquisar
 
 app_name = 'hmcontrol'
 
@@ -10,4 +10,5 @@ urlpatterns = [
     path('login/', Login.as_view(), name='login'),
     path('produtos', Homeprodutos.as_view(), name='listaproduto'),
     path('produtos/<int:pk>', Detalhesproduto.as_view(), name='detalhesproduto'),
+    path('pesquisa/', Pesquisar.as_view(), name='pesquisa')
 ]
