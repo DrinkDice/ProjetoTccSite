@@ -31,6 +31,8 @@ class Detalhesproduto(DetailView):
         instrumentos = self.get_object()
         instrumentos.visualizacoes += 1   # filme.visualizacoes + 1
         instrumentos.save()
+        usuario = request.user
+        usuario.instrumentos_vistos.add(instrumentos)
         # somar 1 na visualizacoes do instrumentos
         # salvar
         return super().get(request, *args, **kwargs) # redireciona o usuario para a url final
