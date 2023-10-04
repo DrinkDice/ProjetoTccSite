@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.shortcuts import render
 from .models import Instrumentos
 from django.views.generic import TemplateView, ListView, DetailView
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class HomePage(TemplateView):
     template_name = 'homepage.html'
@@ -13,6 +13,12 @@ class HomePage(TemplateView):
 
 class Login(TemplateView):
     template_name = 'login.html'
+
+class Paginavendedor(LoginRequiredMixin, TemplateView):
+    template_name = 'paginavendedor.html'
+
+class Conta(LoginRequiredMixin, TemplateView):
+    template_name = 'conta.html'
 
 
 class Homeprodutos(ListView):
