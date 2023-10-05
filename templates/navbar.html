@@ -17,13 +17,24 @@
                 <input type="submit" value="">
             </form>
         </div>
+
         <div class="mr-2">
+            {%if user.is_authenticated %}
+            <a href="login">
+                <button Class="bg-red-600 text-white py-1 px-3 rounded-md">
+                    Logout
+                </button>
+            </a>
+            {% else %}
             <a href="login">
                 <button Class="bg-red-600 text-white py-1 px-3 rounded-md">
                     Login
                 </button>
             </a>
+            {% endif %}
         </div>
+
+        {% if user.is_authenticated %}
         <div class="mr-2">
             <a href="#">
                 <button Class="bg-red-600 text-white py-1 px-3 rounded-md">
@@ -31,6 +42,8 @@
                 </button>
             </a>
         </div>
+        {% endif %}
 
     </div>
+
 </nav>

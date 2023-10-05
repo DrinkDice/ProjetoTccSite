@@ -1,14 +1,19 @@
 # url - view - template
 
 from django.urls import path, include
-from .views import HomePage, Login, Homeprodutos, Detalhesproduto, Pesquisar
+from .views import HomePage, Homeprodutos, Detalhesproduto, Pesquisar, Conta, Paginavendedor
+from django.contrib.auth import views as auth_view
+
 
 app_name = 'hmcontrol'
 
 urlpatterns = [
     path('', HomePage.as_view(), name='homepage'),
-    path('login/', Login.as_view(), name='login'),
+    path('login/', auth_view.LoginView.as_view(template_name='login.html'), name='login'),
+    path('logout/', auth_view.LogoutView.as_view(template_name='logout.html'), name='logout'),
     path('produtos', Homeprodutos.as_view(), name='listaproduto'),
     path('produtos/<int:pk>', Detalhesproduto.as_view(), name='detalhesproduto'),
-    path('pesquisa/', Pesquisar.as_view(), name='pesquisa')
+    path('pesquisa/', Pesquisar.as_view(), name='pesquisa'),
+    path('conta/', Conta.as_view(), name='conta'),
+    path('paginavendedor/', Paginavendedor.as_view(), name='paginavendedor'),
 ]

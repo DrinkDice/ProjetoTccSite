@@ -11,8 +11,8 @@ class HomePage(TemplateView):
     template_name = 'homepage.html'
 
 
-class Login(TemplateView):
-    template_name = 'login.html'
+#class Login(TemplateView):
+   # template_name = 'login.html'
 
 class Paginavendedor(LoginRequiredMixin, TemplateView):
     template_name = 'paginavendedor.html'
