@@ -24,6 +24,11 @@ class Conta(LoginRequiredMixin, TemplateView):
 class Paginaperfil(LoginRequiredMixin, TemplateView):
     template_name = "editarperfil.html"
 
+class Criarconta(ListView):
+    template_name = "criarconta.html"
+
+
+
 class Homeprodutos(ListView):
     template_name = "homeprodutos.html"
     model = Instrumentos

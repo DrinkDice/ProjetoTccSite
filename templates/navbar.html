@@ -44,6 +44,16 @@
         </div>
         {% endif %}
 
+        {% if user.is_authenticated %}
+        <div class="mr-2">
+            <a href="{% url 'hmcontrol:editarperfil' %}">
+                <button Class="bg-red-600 text-white py-1 px-3 rounded-md">
+                    Editar Perfil
+                </button>
+            </a>
+        </div>
+        {% endif %}
+
     </div>
 
 </nav>
