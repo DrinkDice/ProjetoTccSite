@@ -20,13 +20,13 @@
 
         <div class="mr-2">
             {%if user.is_authenticated %}
-            <a href="login">
+            <a href="{% url 'hmcontrol:logout' %}">
                 <button Class="bg-red-600 text-white py-1 px-3 rounded-md">
                     Logout
                 </button>
             </a>
             {% else %}
-            <a href="login">
+            <a href="{% url 'hmcontrol:login' %}">
                 <button Class="bg-red-600 text-white py-1 px-3 rounded-md">
                     Login
                 </button>

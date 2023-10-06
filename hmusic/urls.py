@@ -1,7 +1,7 @@
 # url - view - template
 
 from django.urls import path, include
-from .views import HomePage, Homeprodutos, Detalhesproduto, Pesquisar, Conta, Paginavendedor
+from .views import HomePage, Homeprodutos, Detalhesproduto, Pesquisar, Conta, Paginavendedor, Paginaperfil
 from django.contrib.auth import views as auth_view
 
 
@@ -16,4 +16,5 @@ urlpatterns = [
     path('pesquisa/', Pesquisar.as_view(), name='pesquisa'),
     path('conta/', Conta.as_view(), name='conta'),
     path('paginavendedor/', Paginavendedor.as_view(), name='paginavendedor'),
+    path('editarperfil/', Paginaperfil.as_view, name='editarperfil'),
 ]
