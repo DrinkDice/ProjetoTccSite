@@ -10,10 +10,10 @@ Hire Music
         <div class="z-10 h-full py-32 md:py-0 text-gray-100 text-center flex items-center flex-col">
             <div class="w-full flex justify-center">
                 <div class="flex justify-center items-center w-11/12 md:w-10/12">
-                <div class="flex flex-nowrap justify-center space">
-                    <a href="#"><button class="bg-primary_red py-1 px-3 text-white md:text-lg rounded-md">Fazer Login</button></a>
-                    <a href="#"><button class="bg-primary_red py-1 px-3 text-white md:text-lg rounded-md">Criar uma Conta</button></a>
-                </div>
+                    <div class="flex flex-nowrap justify-center space-x-5 p-5">
+                    <a href="{% url 'hmcontrol:login'%}"><button class="bg-primary_red py-1 px-3 text-white md:text-lg rounded-md">Fazer Login</button></a>
+                    <a href="{% url 'hmcontrol:criarconta'%}"><button class="bg-primary_red py-1 px-3 text-white md:text-lg rounded-md">Criar uma Conta</button></a>
+                    </div>
                 </div>
             </div>
 

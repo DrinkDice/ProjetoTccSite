@@ -24,7 +24,7 @@ class Conta(LoginRequiredMixin, TemplateView):
 class Paginaperfil(LoginRequiredMixin, TemplateView):
     template_name = "editarperfil.html"
 
-class Criarconta(ListView):
+class Criarconta(TemplateView):
     template_name = "criarconta.html"
 
 
