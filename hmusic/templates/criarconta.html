@@ -6,13 +6,33 @@
 Criar conta
 {% endblock %}
 
+{% block head %}
+<style>
+  #hint_id_username{
+  color: #FFFFFF;
+  }
+  #hint_id_email{
+  color: #FFFFFF;
+  }
+  #hint_id_cpf{
+  color: #FFFFFF;
+  }
+  #hint_id_password1{
+  color: #FFFFFF;
+  }
+  #hint_id_password2{
+  color: #FFFFFF;
+}
+</style>
+{% endblock %}
+
 {% block content %}
   <header class="min-h-screen bg-black bg-opacity-75 bg-blend-overlay showcase border-gray-600 border-b-8 flex justify-center items-center bg-no-repeat"  style="background-image: url('{% static 'images/Fundo.jpg' %}');">
     <div class="z-10 h-full py-32 md:py-0 text-gray-100 text-center flex items-center flex-col">
       <form method="post">
         {% csrf_token %}
         <fieldset class="form-group">
-          <legend class="border-bottom mb-4">Criar um Nova Conta</legend>
+          <legend class="border-bottom mb-4 ">Criar um Nova Conta</legend>
           {{ form|crispy }}
         </fieldset>
         <button class="bg-red-600  py-1 px-3 w-full text-white md:text-lg rounded-md" type="submit">Criar</button>
