@@ -27,10 +27,8 @@ class Instrumentos(models.Model):
     descricao = models.TextField(max_length=1000)
     categoria = models.CharField(max_length=15, choices=LISTA_CATEGORIAS)
     visualizacoes = models.IntegerField(default=0)
-    #vendedor =
-    # vai ser inserido pelo usuario vendedor
-    #quantidades =
-    #preco =
+    quantidade = models.PositiveIntegerField(default=0)  # Adicione um campo para quantidade
+    preco = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)  # Adicione um campo para preço
     data_criacao = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
@@ -39,3 +37,4 @@ class Instrumentos(models.Model):
 
 class Usuario(AbstractUser):
     instrumentos_vistos = models.ManyToManyField("Instrumentos")
+    cpf = models.CharField(max_length=14,unique=True,)
