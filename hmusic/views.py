@@ -1,12 +1,10 @@
-from django.shortcuts import render
-
 # Create your views here.
 
-from django.shortcuts import render, redirect, reverse
-from .models import Instrumentos
+from django.shortcuts import render, redirect, reverse, HttpResponseRedirect
+from .models import Instrumentos, Usuario
 from .forms import CriarContaForm
-from django.views.generic import TemplateView, ListView, DetailView, FormView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import TemplateView, ListView, DetailView, FormView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
 class HomePage(TemplateView):
@@ -23,8 +21,20 @@ class Conta(LoginRequiredMixin, TemplateView):
     template_name = 'conta.html'
 
 
-class Paginaperfil(LoginRequiredMixin, TemplateView):
-    template_name = "editarperfil.html"
+
+class Paginaperfil(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    template_name = 'editarperfil.html'
+    model = Usuario
+    fields = ['first_name', 'last_name', 'email']
+
+    def test_func(self):
+        user = self.get_object()
+        return self.request.user == user
+
+    def get_success_url(self):
+        return reverse('hmcontrol:conta')
+
+
 
 class Criarconta(FormView):
     template_name = "criarconta.html"

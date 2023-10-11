@@ -37,4 +37,4 @@ class Instrumentos(models.Model):
 
 class Usuario(AbstractUser):
     instrumentos_vistos = models.ManyToManyField("Instrumentos")
-    cpf = models.CharField(max_length=14,unique=True,)
+    cpf = models.CharField(max_length=14, unique=True,)
