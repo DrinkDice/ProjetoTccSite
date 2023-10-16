@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +21,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ytr6rxmle771iud*it@&%7cg2o%#=u_(2$!v7&%k&aq4eeg%sp'
+TOKEN_CSRF = os.getenv('TOKEN_CSRF')
+if TOKEN_CSRF:
+    SECRET_KEY = TOKEN_CSRF
+    CSRF_TRUSTED_ORIGINS = ['https://projetotccsite-production.up.railway.app/']
+else:
+    SECRET_KEY = 'django-insecure-ytr6rxmle771iud*it@&%7cg2o%#=u_(2$!v7&%k&aq4eeg%sp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["https://projetotccsite-production.up.railway.app/", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -89,7 +95,7 @@ DATABASES = {
 }
 
 import dj_database_url
-import os
+
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 if DATABASE_URL:
