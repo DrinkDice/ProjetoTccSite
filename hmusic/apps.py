@@ -5,6 +5,7 @@ class HmusicConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'hmusic'
 
+
     def ready(self):
         from .models import Usuario
         import os
