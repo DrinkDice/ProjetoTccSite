@@ -36,23 +36,14 @@
 
         {% if user.is_authenticated %}
         <div class="mr-2">
-            <a href="#">
+            <a href="{% url 'hmcontrol:conta' user.pk %}">
                 <button Class="bg-red-600 text-white py-1 px-3 rounded-md">
-                    Carrinho
+                    Conta
                 </button>
             </a>
         </div>
         {% endif %}
 
-        {% if user.is_authenticated %}
-        <div class="mr-2">
-            <a href="{% url 'hmcontrol:editarperfil' user.pk %}">
-                <button Class="bg-red-600 text-white py-1 px-3 rounded-md">
-                    Editar Perfil
-                </button>
-            </a>
-        </div>
-        {% endif %}
 
     </div>
 

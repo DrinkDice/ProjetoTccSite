@@ -7,6 +7,47 @@
 {% endblock %}
 
 {% block content %}
+<main>
+    <section>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        <title>Ficha de Usuário</title>
+
+
+        <div class="container mt-5">
+            <div class="card p-5">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <!-- Avatar do Usuário -->
+                            <div class="bg-gray-300 w-32 h-32 rounded-full mx-auto"></div>
+                        </div>
+                        <div class="col-md-9">
+                            <!-- Informações do Usuário -->
+                            <h2 class="text-2xl font-bold">Nome do Usuário</h2>
+                            <p>Email: usuario@exemplo.com</p>
+                            <!-- Outras informações do usuário -->
+                        </div>
+                        <div>
+                            <a href="{% url 'hmcontrol:editarperfil' user.pk %}">
+                                <button Class="bg-red-600 text-white py-1 px-3 rounded-md">
+                                Editar Perfil
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<style>
+    /* Ajuste de margem inferior para evitar a sobreposição com o rodapé */
+    main {
+        margin-bottom: 531px; /* Ajuste o valor conforme necessário */
+    }
+</style>
 
 {% endblock %}

@@ -14,7 +14,7 @@ urlpatterns = [
     path('pesquisa/', Pesquisar.as_view(), name='pesquisa'),
     path('login/', auth_view.LoginView.as_view(template_name='login.html'), name='login'),
     path('logout/', auth_view.LogoutView.as_view(template_name='logout.html'), name='logout'),
-    path('conta/', Conta.as_view(), name='conta'), #coloquei a chave primaria aqui para ele direcionar as informações da conta que acessou do banco <int:pk>
+    path('conta/<int:pk>', Conta.as_view(), name='conta'), #coloquei a chave primaria aqui para ele direcionar as informações da conta que acessou do banco <int:pk>
     path('paginavendedor/', Paginavendedor.as_view(), name='paginavendedor'),
     path('editarperfil/<int:pk>', Paginaperfil.as_view(), name='editarperfil'),
     path('criarconta/', Criarconta.as_view(), name='criarconta'),
