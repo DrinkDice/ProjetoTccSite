@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block titulo %}
+Criar Instrumento
+{% endblock %}
+
+{% block head %}
+<style>
+</style>
+{% endblock %}
+
+{% block content %}
+  <header class="min-h-screen bg-black bg-opacity-75 bg-blend-overlay showcase border-gray-600 border-b-8 flex justify-center items-center bg-no-repeat"  style="background-image: url('{% static 'images/Fundo.jpg' %}');">
+    <div class="z-10 h-full py-32 md:py-0 text-gray-100 text-center flex items-center flex-col">
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-4 ">Criar novo Instrumento</legend>
+          {{ form|crispy }}
+        </fieldset>
+        <button class="bg-red-600  py-1 px-3 w-full text-white md:text-lg rounded-md" type="submit">Criar</button>
+      </form>
+    </div>
+  </header>
+{% endblock %}

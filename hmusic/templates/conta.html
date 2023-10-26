@@ -29,10 +29,20 @@
                             <p>Email: usuario@exemplo.com</p>
                             <!-- Outras informações do usuário -->
                         </div>
-                        <div>
-                            <a href="{% url 'hmcontrol:editarperfil' user.pk %}">
-                                <button Class="bg-red-600 text-white py-1 px-3 rounded-md">
-                                Editar Perfil
+                        <div class="col-md-12 mt-3">
+                            <a href="{% url 'hmcontrol:editarperfil' user.pk %}" class="mr-3">
+                                <button class="bg-red-600 text-white py-1 px-3 rounded-md">
+                                    Editar Perfil
+                                </button>
+                            </a>
+                            <a href="{% url 'hmcontrol:editarperfil' user.pk %}" class="mr-3">
+                                <button class="bg-red-600 text-white py-1 px-3 rounded-md">
+                                    Anunciados
+                                </button>
+                            </a>
+                            <a href="https://api.whatsapp.com/send?phone=NUMERO_DO_WHATSAPP">
+                                <button class="bg-green-600 text-white py-1 px-3 rounded-md">
+                                    Iniciar Conversa no WhatsApp
                                 </button>
                             </a>
                         </div>
@@ -40,6 +50,7 @@
                 </div>
             </div>
         </div>
+
     </section>
 </main>
 

@@ -1,8 +1,10 @@
 # url - view - template
 
 from django.urls import path, include, reverse_lazy
-from .views import HomePage, Homeprodutos, Detalhesproduto, Pesquisar, Conta, Paginavendedor, Paginaperfil, Criarconta
+from .views import HomePage, Homeprodutos, Detalhesproduto, Pesquisar, Conta, Paginavendedor, Paginaperfil, Criarconta, CriarInstrumento
 from django.contrib.auth import views as auth_view
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 app_name = 'hmcontrol'
@@ -19,4 +21,8 @@ urlpatterns = [
     path('editarperfil/<int:pk>', Paginaperfil.as_view(), name='editarperfil'),
     path('criarconta/', Criarconta.as_view(), name='criarconta'),
     path('mudarsenha/', auth_view.PasswordChangeView.as_view(template_name='editarperfil.html', success_url=reverse_lazy('hmcontrol:conta')), name='mudarsenha'),
+    path('criarinstrumento/', CriarInstrumento.as_view(), name='criarinstrumento'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

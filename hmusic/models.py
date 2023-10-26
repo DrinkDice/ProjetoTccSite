@@ -28,8 +28,9 @@ class Instrumentos(models.Model):
     categoria = models.CharField(max_length=15, choices=LISTA_CATEGORIAS)
     visualizacoes = models.IntegerField(default=0)
     quantidade = models.PositiveIntegerField(default=0)  # Adicione um campo para quantidade
-    preco = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)  # Adicione um campo para preço
+    preco = models.DecimalField(max_digits=10, decimal_places=2)  # Adicione um campo para preço
     data_criacao = models.DateTimeField(default=timezone.now)
+    numero_telefone = models.CharField(max_length=15, default='123456789')
 
     def __str__(self):
         return self.titulo # + " " + self.vendedor tem que termninar aqui
