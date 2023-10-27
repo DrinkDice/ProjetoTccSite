@@ -102,6 +102,7 @@ class CriarInstrumento(LoginRequiredMixin, FormView):
         return reverse('hmcontrol:conta', args=[self.request.user.pk])
 
 
+
 class Pesquisar(ListView):
     template_name = "pesquisar.html"
     model = Instrumentos

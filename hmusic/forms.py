@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from .models import Usuario, Instrumentos
 from django import forms
+import re
 
 #cria o usuario(tbm pode ser usado para criar o instrumento tudo passa pela mesma logica aula 40
 
@@ -43,3 +44,14 @@ class CriarInstrumentoForm(forms.ModelForm):
         titulo = self.cleaned_data.get('titulo')
         # Realize a validação do nome aqui e retorne ou levante exceções conforme necessário
         return titulo
+
+    def clean_numero_telefone(self):
+        numero_telefone = self.cleaned_data.get('numero_telefone')
+
+        # Use uma expressão regular para verificar se o número de telefone está no formato internacional.
+        # Aqui, estamos considerando que um número de telefone internacional começa com '+' seguido de dígitos.
+        if not re.match(r'^\+\d+$', numero_telefone):
+            raise forms.ValidationError(
+                'O número de telefone deve estar no formato internacional, por exemplo, +1234567890.')
+
+        return numero_telefone
