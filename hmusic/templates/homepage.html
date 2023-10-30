@@ -109,7 +109,7 @@ h1 {
                       {% if forloop.counter < 5%}
                       <div class="item h-64 w-1/4 m-4">
                           <a href="{% url 'hmcontrol:detalhesproduto' instrumentos.id %}">
-                            <img src="{{ instrumentos.thumb.url }}" class="rounded-md w-full h-full object-cover">
+                            <img src="{{ instrumentos.thumb.url }}" class="rounded-md w-full h-full object-cover" alt="thumb">
                           </a>
                       </div>
                       {% endif %}
