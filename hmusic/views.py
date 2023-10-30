@@ -32,7 +32,7 @@ class Paginaperfil(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return self.request.user == user
 
     def get_success_url(self):
-        return reverse('hmcontrol:conta')
+        return reverse('hmcontrol:conta', args=[self.request.user.pk])
 
 
 class Criarconta(FormView):
