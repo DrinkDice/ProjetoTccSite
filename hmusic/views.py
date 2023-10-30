@@ -60,15 +60,11 @@ class Detalhesproduto(DetailView):
     # object - > 1 item da lista de produtos sera exibido ao selecionar um produto na home page
 
     def get(self, request, *args, **kwargs):
-        # descobrir qual o filme ele ta acessando
+        # Descobrir qual instrumento está sendo acessado
         instrumentos = self.get_object()
-        instrumentos.visualizacoes += 1  # filme.visualizacoes + 1
+        instrumentos.visualizacoes += 1
         instrumentos.save()
-        usuario = request.user
-        usuario.instrumentos_vistos.add(instrumentos)
-        # somar 1 na visualizacoes do instrumentos
-        # salvar
-        return super().get(request, *args, **kwargs)  # redireciona o usuario para a url final
+        return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super(Detalhesproduto, self).get_context_data(**kwargs)
