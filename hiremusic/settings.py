@@ -29,7 +29,7 @@ else:
     SECRET_KEY = 'django-insecure-ytr6rxmle771iud*it@&%7cg2o%#=u_(2$!v7&%k&aq4eeg%sp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["projetotccsite-production.up.railway.app", "localhost", "127.0.0.1"]
 
