@@ -57,18 +57,22 @@ class Detalhesproduto(DetailView):
     template_name = "detalhesproduto.html"
     model = Instrumentos
 
-    # object - > 1 item da lista de produtos sera exibido ao selecionar um produto na home page
-
     def get(self, request, *args, **kwargs):
-        # Descobrir qual instrumento está sendo acessado
         instrumentos = self.get_object()
-        instrumentos.visualizacoes += 1
-        instrumentos.save()
+        usuario = request.user
+
+        # Verifique se o usuário está autenticado
+        if request.user.is_authenticated:
+            # Se estiver autenticado, incremente as visualizações
+            instrumentos.visualizacoes += 1
+            instrumentos.save()
+            # Adicione o instrumento à lista de instrumentos_vistos
+            usuario.instrumentos_vistos.add(instrumentos)
+
         return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super(Detalhesproduto, self).get_context_data(**kwargs)
-        # filtrar tabela de filmes de acordo com a categoria
         self.get_object()
         produtos_relacionados = Instrumentos.objects.filter(categoria=self.get_object().categoria)[0:5]
         context["produtos_relacionados"] = produtos_relacionados
