@@ -80,6 +80,19 @@ h1 {
     display:none;
   }
 }
+
+.bg-orange-frame {
+    background-color: rgb(244, 101, 48);
+    /* Outras propriedades de estilo, como bordas arredondadas ou cores de texto, podem ser definidas aqui */
+  }
+
+  h2 {
+    font-size: 2.5rem; /* Você pode ajustar o valor de "2.5rem" para aumentar ou diminuir o tamanho da fonte conforme desejado */
+    /* Outras propriedades de estilo para o elemento h2, se necessário */
+  }
+
+
+
 </style>
 {% endblock %}
 
@@ -97,52 +110,53 @@ h1 {
         </section>
 
 
-        <section class='bg-primary_black flex justify-center py-10 '>
-            <div class="p-8 w-10/12 relative" >
-                <h2 class="text-gray-200 text-2xl font-medium">
-                    Novos Anuncidos
-                </h2>
-                <div class="wrapper">
-                  <section id="section1" class="flex flex-nowrap items-center justify-center space-x-8">
-                    <a href="#section2" class="arrow__btn text-6xl page">‹</a>
-                      {% for instrumentos in lista_instrumentos_recentes %}
-                      {% if forloop.counter < 5%}
-                      <div class="item h-64 w-1/4 m-4">
-                          <a href="{% url 'hmcontrol:detalhesproduto' instrumentos.id %}">
-                            <img src="{{ instrumentos.thumb.url }}" class="rounded-md w-full h-full object-cover">
-                          </a>
-                      </div>
-                      {% endif %}
-                      {% endfor %}
-                        <a href="#section2" class="arrow__btn text-6xl">›</a>
-                  </section>
-                    {% if lista_instrumentos_recentes|length > 4 %}
-                    <section id="section2" class="flex flex-nowrap items-center justify-center">
-                        <a href="#section1" class="arrow__btn text-6xl">‹</a>
-                          {% for instrumentos in lista_instrumentos_recentes %}
-                          {% if forloop.counter > 5%}
-                          <div class="item h-64 w-1/4 m-4">
-                            <a href="{% url 'hmcontrol:detalhesproduto' instrumentos.id %}">
-                                <img src="{{ instrumentos.thumb.url }}" class="rounded-md w-full h-full object-cover">
-                             </a>
-                          </div>
-                          {% endif %}
-                          {% endfor %}
-                        <a href="#section1" class="arrow__btn text-6xl">›</a>
-                    </section>
-                    {% endif %}
+        <div class="rounded-lg bg-black p-6 shadow-md">
+            <section class='rounded-lg bg-orange-frame flex justify-center py-10'>
+                <div class="p-8 w-10/12 relative">
+                    <h2 class="text-gray-200 text-2xl font-medium">
+                        Novos Anúncios
+                    </h2>
+                    <div class="wrapper rounded-lg bg-black">
+                        <section id="section1" class="flex flex-nowrap items-center justify-center space-x-8">
+                            <a href="#section2" class="arrow__btn text-6xl page">‹</a>
+                            {% for instrumentos in lista_instrumentos_recentes %}
+                            {% if forloop.counter < 5 %}
+                            <div class="item h-64 w-1/4 m-4">
+                                <a href="{% url 'hmcontrol:detalhesproduto' instrumentos.id %}">
+                                    <img src="{{ instrumentos.thumb.url }}" class="rounded-md w-full h-full object-cover">
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                            <a href="#section2" class="arrow__btn text-6xl">›</a>
+                        </section>
+                        {% if lista_instrumentos_recentes|length > 4 %}
+                        <section id="section2" class="flex flex-nowrap items-center justify-center">
+                            <a href="#section1" class="arrow__btn text-6xl">‹</a>
+                            {% for instrumentos in lista_instrumentos_recentes %}
+                            {% if forloop.counter > 5 %}
+                            <div class="item h-64 w-1/4 m-4">
+                                <a href="{% url 'hmcontrol:detalhesproduto' instrumentos.id %}">
+                                    <img src="{{ instrumentos.thumb.url }}" class="rounded-md w-full h-full object-cover">
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                            <a href="#section1" class="arrow__btn text-6xl">›</a>
+                        </section>
+                        {% endif %}
+                    </div>
                 </div>
+            </section>
+        </div>
 
-
-            </div>
-        </section>
-    
-        <section class='bg-primary_black flex justify-center py-10'>
+    <div class="rounded-lg bg-black p-6 shadow-md">
+        <section class='rounded-lg bg-orange-frame flex justify-center py-10'>
             <div class="p-8 w-10/12 relative" >
                 <h2 class="text-gray-200 text-2xl font-medium">
                     Mais Acessados
                 </h2>
-                <div class="wrapper">
+                <div class="wrapper rounded-lg bg-black">
                   <section id="section1emalta" class="flex flex-nowrap items-center justify-center space-x-8">
                     <a href="#section2emalta" class="arrow__btn text-6xl page">‹</a>
                       {% for instrumentos in lista_em_alta %}
@@ -176,6 +190,7 @@ h1 {
 
             </div>
         </section>
+    </div>
 
 
 

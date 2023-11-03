@@ -7,37 +7,41 @@ Hire Music
 
 {% block content %}
 
-<div class="py-10 ">
-      <h1>Pagina Produto: {{ object.titulo }}</h1>
-    <img src="{{ object.thumb.url }}">
-</div>
-<main class="border-gray-600 border-b-8">
-    <section class='bg-primary_black flex justify-center py-10'>
-        <div class="p-8 w-10/12 relative">
-            <h2 class="text-gray-200 text-3x1 font-medium">
-                Descrição
-            </h2>
-            <div class="flex justify-left items-center min-w-full produto_lis">
-                <p class="text-gray-100 text-lg">
-                    {{ object.descricao }}
-                    <br>
-                    Visualizações: {{ object.visualizacoes }}
-                </p>
+    <div class="py-10 px-10">
+        <h1 class="text-3xl font-semibold">{{ object.titulo }}</h1>
+    </div>
+
+    <div class="bg-white rounded-lg p-6 shadow-md flex" style="height: 600px;">
+        <div class="w-1/2 p-4 ml-12" style="flex: none;">
+            <div class="rounded-lg overflow-hidden" style="width: 400px;">
+                <img src="{{ object.thumb.url }}" class="w-full object-cover" alt="{{ object.titulo }}">
             </div>
-            <div>
-                <p>
-                    {{ object.numero_telefone }}
-                </p>
+        </div>
+        <div class="w-1/2 p-4">
+            <div class="mt-4 text-gray-700">
+                Visualizações: {{ object.visualizacoes }}
             </div>
-            <div>
+            <div class="mt-4">
                 <a href="{% if user.is_authenticated %}https://wa.me/{{ object.numero_telefone }}?text=Tenho%20interesse%20em%20comprar%20seu%20produto%20anunciado%20na%20HireMusic{% else %}{% url 'hmcontrol:login' %}{% endif %}">
-                    <button class="bg-green-600 text-white py-1 px-3 rounded-md">
+                    <button class="bg-green-600 text-white py-2 px-4 rounded-md">
                         Iniciar Conversa no WhatsApp
                     </button>
                 </a>
             </div>
         </div>
+    </div>
 
+
+
+    <section class="bg-primary_black flex justify-center py-10">
+        <div class="p-8 w-10/12 relative">
+            <div class="bg-white rounded-lg p-4">
+                <h2 class="text-2xl font-medium text-black border-b-2 border-dashed border-black">Descrição</h2>
+                <p class="text-black text-lg">
+                    {{ object.descricao }}
+                </p>
+            </div>
+        </div>
     </section>
 
     <section class='bg-primary_black flex justify-center py-10'>
@@ -58,7 +62,6 @@ Hire Music
         </div>
     </section>
 
-</main>
 
 
 {% endblock %}
