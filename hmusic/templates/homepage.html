@@ -15,9 +15,10 @@ html {
 }
 
 body {
-  margin: 0;
-  background-color: #000;
-}
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
 
 h1 {
   font-family: Arial;
@@ -90,7 +91,20 @@ h1 {
     font-size: 2.5rem; /* Você pode ajustar o valor de "2.5rem" para aumentar ou diminuir o tamanho da fonte conforme desejado */
     /* Outras propriedades de estilo para o elemento h2, se necessário */
   }
+  .welcome-container {
+      display: inline-block;
+      padding: 80px;
+      background-color: rgba(169, 169, 169, 0.5); /* Cinza translúcido */
+      border: 2px solid #696969; /* Cor do contorno cinza */
+      border-radius: 10px;
+      text-align: center;
 
+    }
+
+    .welcome-text {
+      font-size: 24px;
+      color: #333;
+    }
 
 
 </style>
@@ -99,14 +113,16 @@ h1 {
 {% block content %}
     <h1>Essa é a homepage do site</h1>
 <main class='bg-primary_black min-h-screen w-full border-gray-600 border-b-8'>
-        <section class="h-screen relative bg-no-repeat pb-8 pl-6 flex items-end bg-cover" style="background-image: url('{% static 'images/Fundo.jpg' %}');">
-            <div>
-                <h2 class="text-6xl font-semibold text-white my-4">
-
-                </h2>
+        <section class="h-screen relative bg-no-repeat pb-8 pl-6 flex items-end bg-cover" style="background-image: url('{% static 'images/FundoTcc.jpg' %}');">
+            <body>
+              <div class="welcome-container">
+                <p class="welcome-text">
+                  Bem Vindo
+                </p>
                 <p class=" w-11/12 md:w-5/12 font-medium text-white my-4">
                 </p>
             </div>
+            </body>
         </section>
 
 
