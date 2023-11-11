@@ -21,6 +21,9 @@ Hire Music
             <div class="mt-4 text-gray-700">
                 Visualizações: {{ object.visualizacoes }}
             </div>
+            <div class="mt-4 text-gray-700">
+                Preço: {{ object.preco}}
+            </div>
             <div class="mt-4">
                 <a href="{% if user.is_authenticated %}https://wa.me/{{ object.numero_telefone }}?text=Tenho%20interesse%20em%20comprar%20seu%20produto%20anunciado%20na%20HireMusic{% else %}{% url 'hmcontrol:login' %}{% endif %}">
                     <button class="bg-green-600 text-white py-2 px-4 rounded-md">

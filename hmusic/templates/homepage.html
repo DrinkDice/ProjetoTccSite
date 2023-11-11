@@ -18,6 +18,7 @@ body {
       justify-content: center;
       align-items: center;
       background-color: #f0f0f0;
+      justify-content: center;
     }
 
 h1 {
@@ -92,18 +93,18 @@ h1 {
     /* Outras propriedades de estilo para o elemento h2, se necessário */
   }
   .welcome-container {
-      display: inline-block;
-      padding: 80px;
-      background-color: rgba(169, 169, 169, 0.5); /* Cinza translúcido */
-      border: 2px solid #696969; /* Cor do contorno cinza */
-      border-radius: 10px;
-      text-align: center;
-
+    text-align: center;
+    padding: 20px;
+    background-color:#D2B48C; /* Gradiente de bege e marrom */
+    border: 2px solid #8B4513; /* Marrom escuro */
+    border-radius: 10px;
     }
 
     .welcome-text {
-      font-size: 24px;
-      color: #333;
+      font-size: 40px;
+      color: #472106; /* Marrom escuro */
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      letter-spacing: 2px;
     }
 
 
@@ -113,19 +114,19 @@ h1 {
 {% block content %}
     <h1>Essa é a homepage do site</h1>
 <main class='bg-primary_black min-h-screen w-full border-gray-600 border-b-8'>
-        <section class="h-screen relative bg-no-repeat pb-8 pl-6 flex items-end bg-cover" style="background-image: url('{% static 'images/FundoTcc.jpg' %}');">
-            <body>
+  
+  <section class="h-screen relative bg-no-repeat pb-8 pl-6 flex items-end bg-cover" style="background-image: url('{% static 'images/FundoTcc.jpg' %}');align-items: center;justify-content: center">
+            
               <div class="welcome-container">
                 <p class="welcome-text">
-                  Bem Vindo
+                  Seja bem vindo!
                 </p>
                 <p class=" w-11/12 md:w-5/12 font-medium text-white my-4">
                 </p>
             </div>
-            </body>
+            
         </section>
-
-
+      </body>     
         <div class="rounded-lg bg-black p-6 shadow-md">
             <section class='rounded-lg bg-orange-frame flex justify-center py-10'>
                 <div class="p-8 w-10/12 relative">
