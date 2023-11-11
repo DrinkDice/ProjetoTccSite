@@ -1,50 +1,52 @@
 {% load static %}
 
-
-<nav class="w-full flex justify-between items-center py-3 px-4 fixed z-50">
-    <div class="6/12">
-        <a href="/">
-            <img class="w-2/12" src="{% static 'images/Logo.PNG' %}">
-        </a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light rounded-lg w-full flex justify-between items-center py-0 px-4 fixed z-50 fixed-top">
 
 
-    </div>
-
-    <div class="6/12 flex flex-nowrap justify-end">
-        <div class="mr-2">
-            <form method="get" action="{% url 'hmcontrol:pesquisa' %}">
-                <input type ="text" class="py-1 px-2 rounded-md text-black" name="query" value="{{ request.GET.query }}" placeholder="Pesquisar...">
-                <input type="submit" value="">
-            </form>
+    <!-- Ícone à esquerda -->
+    <a class="navbar-brand" href="/">
+        <div class="circle-image">
+            <img class="w-5/12" src="{% static 'images/LOGO3.PNG' %}" alt="Página Inicial" style="display: block;">
         </div>
+    </a>
 
-        <div class="mr-2">
-            {%if user.is_authenticated %}
-            <a href="{% url 'hmcontrol:logout' %}">
-                <button Class="bg-red-600 text-white py-1 px-3 rounded-md">
-                    Logout
-                </button>
-            </a>
-            {% else %}
-            <a href="{% url 'hmcontrol:login' %}">
-                <button Class="bg-red-600 text-white py-1 px-3 rounded-md">
-                    Login
-                </button>
-            </a>
-            {% endif %}
-        </div>
+
+
+
+    <div class="ml-auto d-flex align-items-center"> <!-- Isso empurra os elementos para a direita -->
+        <!-- Caixa de pesquisa à direita -->
+        <form class="form-inline" method="get" action="{% url 'hmcontrol:pesquisa' %}">
+            <input type="text" class="py-1 px-2 rounded-md text-black" name="query" value="{{ request.GET.query }}" placeholder="Pesquisar...">
+            <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+        </form>
+
+        <!-- Espaço entre os elementos -->
+        <div style="width: 20px;"></div>
 
         {% if user.is_authenticated %}
         <div class="mr-2">
+            <a href="{% url 'hmcontrol:logout' %}">
+                <button class="bg-red-600 text-white py-1 px-3 rounded-md">
+                    Logout
+                </button>
+            </a>
+        </div>
+
+        <div class="mr-2">
             <a href="{% url 'hmcontrol:conta' user.pk %}">
-                <button Class="bg-red-600 text-white py-1 px-3 rounded-md">
+                <button class="bg-red-600 text-white py-1 px-3 rounded-md">
                     Conta
                 </button>
             </a>
         </div>
+        {% else %}
+        <div class="mr-2">
+            <a href="{% url 'hmcontrol:login' %}">
+                <button class="bg-red-600 text-white py-1 px-3 rounded-md">
+                    Login
+                </button>
+            </a>
+        </div>
         {% endif %}
-
-
     </div>
-
 </nav>
