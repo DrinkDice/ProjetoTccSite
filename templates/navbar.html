@@ -1,12 +1,12 @@
 {% load static %}
 
-<nav class="navbar navbar-expand-lg navbar-light  rounded-lg w-full flex justify-between items-center py-0 px-4 fixed z-50" style="background-color: rgba(210, 180, 140);">
+<nav class="navbar navbar-expand-lg navbar-light rounded-lg w-full flex justify-between items-center py-0 px-4 z-50" style="background-color: rgba(210, 180, 140); position: fixed; top: 0; width: 100%;">
 
 
     <!-- Ícone à esquerda -->
     <a class="navbar-brand" href="/">
         <div class="circle-image">
-            <img class="w-5/12" src="{% static 'images/Logo.PNG' %}" alt="Página Inicial" style="display: block;">
+            <img class="w-1/4 rounded-full" src="{% static 'images/Logo.PNG' %}" alt="Página Inicial" style="display: block;">
         </div>
     </a>
 
@@ -16,8 +16,8 @@
     <div class="ml-auto d-flex align-items-center"> <!-- Isso empurra os elementos para a direita -->
         <!-- Caixa de pesquisa à direita -->
         <form class="form-inline" method="get" action="{% url 'hmcontrol:pesquisa' %}">
-            <input type="text" class="py-1 px-2 rounded-md text-black" name="query" value="{{ request.GET.query }}" placeholder="Pesquisar...">
-            <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+            <input type="text" class="py-1 px-2 rounded-md text-black border border-black" name="query" value="{{ request.GET.query }}" placeholder="Pesquisar...">
+            <button class="btn btn-outline-success text-black border border-black" type="submit">Pesquisar</button>
         </form>
 
         <!-- Espaço entre os elementos -->
@@ -26,7 +26,7 @@
         {% if user.is_authenticated %}
         <div class="mr-2">
             <a href="{% url 'hmcontrol:logout' %}">
-                <button class="bg-red-600 text-white py-1 px-3 rounded-md">
+                <button class="bg-red-600 text-white py-1 px-3 rounded-md border border-black">
                     Logout
                 </button>
             </a>
@@ -34,11 +34,7 @@
 
         <div class="mr-2">
             <a href="{% url 'hmcontrol:conta' user.pk %}">
-<<<<<<< HEAD
-                <button class="bg-red-600 text-white py-1 px-3 rounded-md">
-=======
-                <button class="bg-red-600 text-#472106 py-1 px-3 rounded-md">
->>>>>>> 29ef35a8622f3576d819d4db72fa933ad1e4ad93
+                <button class="bg-red-600 text-#472106 py-1 px-3 rounded-md border border-black">
                     Conta
                 </button>
             </a>
@@ -46,7 +42,7 @@
         {% else %}
         <div class="mr-2">
             <a href="{% url 'hmcontrol:login' %}">
-                <button class="bg-red-600 text-white py-1 px-3 rounded-md">
+                <button class="bg-red-600 text-white py-1 px-3 rounded-md border border-black">
                     Login
                 </button>
             </a>
