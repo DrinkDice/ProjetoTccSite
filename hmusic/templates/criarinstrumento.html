@@ -12,7 +12,7 @@ Criar Instrumento
 {% endblock %}
 
 {% block content %}
-  <header class="min-h-screen bg-black bg-opacity-75 bg-blend-overlay showcase border-gray-600 border-b-8 flex justify-center items-center bg-no-repeat"  style="background-image: url('{% static 'images/FundoTcc.jpg' %}');">
+  <header class="min-h-screen bg-black bg-opacity-75 bg-blend-overlay showcase border-gray-600 border-b-8 flex justify-center items-center bg-no-repeat"  style="background-image: url('{% static 'images/FundoTcc.jpg' %}') ;background-position:center; background-size:cover;">
     <div class="z-10 h-full py-32 md:py-40 text-gray-100 text-center flex items-center flex-col">
       <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
