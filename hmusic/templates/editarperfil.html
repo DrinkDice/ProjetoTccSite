@@ -11,6 +11,16 @@ Editar Perfil
   #hint_id_new_password1{
   color: #FFFFFF;
   }
+  .button-usual-edit-profile{
+        color: white;
+        background-color:rgb(71, 33, 6);
+        border-radius: 10px;
+        width: 80px;
+        height: 40px;
+    }
+    .button-usual-edit-profile:hover{
+        background-color: rgb(50, 20, 0);
+    }
 </style>
 {% endblock %}
 
@@ -25,7 +35,9 @@ Editar Perfil
                     <legend class="border-bottom mb-4">Edite os campos abaixo para editar seu perfil</legend>
                  {{ form|crispy }}
                 </fieldset>
-                <button class="bg-red-600 py-1 px-3 text-white md:text-lg rounded-md" type="submit">Confirmar</button>
+                <button class="button-usual-edit-profile" type="submit" style="background-color:rgb(71, 23, 6);width: 80px;">
+                    Confirmar
+                </button>
             </form>
             {% if 'new_password1' not in form.as_table %} {# Verifique se 'new_password1' não está no formulário #}
                 <small><a href="{% url 'hmcontrol:mudarsenha' %}">Quer mudar sua senha?</a></small>

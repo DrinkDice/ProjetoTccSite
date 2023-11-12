@@ -8,6 +8,17 @@ Criar Instrumento
 
 {% block head %}
 <style>
+  .button-usual-anuncia{
+            color: white;
+            background-color:rgb(71, 23, 6);
+            border-radius: 10px;
+            width: 275px;
+            height: 35px;
+        }
+        .button-usual-anuncia:hover{
+            background-color: rgb(50, 20, 0);
+        }
+
 </style>
 {% endblock %}
 
@@ -20,7 +31,9 @@ Criar Instrumento
           <legend class="border-bottom mb-4 ">Criar novo Instrumento</legend>
           {{ form|crispy }}
         </fieldset>
-        <button class="bg-red-600  py-1 px-3 w-full text-white md:text-lg rounded-md" type="submit">Criar</button>
+        <button class="button-usual-anuncia" type="submit" style="background-color:rgb(71, 23, 6);width:350px" >
+          Criar
+        </button>
       </form>
     </div>
   </header>
