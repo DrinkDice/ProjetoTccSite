@@ -15,26 +15,6 @@
     {% block head %}
     {% endblock %}
     <style>
-        /* Ajuste de CSS para evitar sobreposição */
-
-        
-        
-
-
-
-    </style>
-</head>
-<body class="bg-black text-gray-100 font-primary">
-
-    {% include 'navbar.html' %}
-
-    {% block content %}
-
-    {% endblock %}
-<footer>
-    {% include 'rodape.html' %}
-</footer>
-<style>
     /* Ajuste de CSS para o rodapé */
     body {
         padding-bottom: 45px; /* Altura do rodapé */
@@ -54,6 +34,18 @@
         padding: 10px;
     }
 </style>
+</head>
+<body class="bg-black text-gray-100 font-primary">
+
+    {% include 'navbar.html' %}
+
+    {% block content %}
+
+    {% endblock %}
+<footer>
+    {% include 'rodape.html' %}
+</footer>
+
     <script>
          const nav = document.querySelector('nav')
 
