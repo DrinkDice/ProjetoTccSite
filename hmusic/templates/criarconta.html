@@ -23,6 +23,17 @@ Criar conta
   #hint_id_password2{
   color: #FFFFFF;
 }
+
+.button-usual-criauser{
+            color: white;
+            background-color:rgb(71, 23, 6);
+            border-radius: 10px;
+            width: 275px;
+            height: 35px;
+        }
+        .button-usual-criauser:hover{
+            background-color: rgb(50, 20, 0);
+        }
 </style>
 {% endblock %}
 
@@ -35,7 +46,7 @@ Criar conta
           <legend class="border-bottom mb-4 ">Criar um Nova Conta</legend>
           {{ form|crispy }}
         </fieldset>
-        <button class="bg-red-600  py-1 px-3 w-full text-white md:text-lg rounded-md" type="submit">Criar</button>
+        <button class="bg-red-600  py-1 px-3 w-full text-white md:text-lg rounded-md" type="submit" style="background-color:rgb(71, 33, 6);width: 400px;">Criar</button>
       </form>
     </div>
   </header>
