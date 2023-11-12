@@ -6,7 +6,13 @@ Hire Music
 {% endblock %}
 
 {% block content %}
-
+<style>
+    .info-produto {
+  color: #000; /* Cor do texto preto */
+  font-weight: bold;
+  margin: 10px 0;
+}
+</style>
     <div class="py-10 px-10">
         <h1 class="text-3xl font-semibold">{{ object.titulo }}</h1>
     </div>
@@ -18,8 +24,14 @@ Hire Music
             </div>
         </div>
         <div class="w-1/2 p-4">
-            <div class="mt-4 text-gray-700">
-                Visualizações: {{ object.visualizacoes }}
+            <div class="info-produto">
+                Nome: {{ object.titulo }}
+            </div>
+            <div class="info-produto">
+                Preço: R${{ object.preco}}
+            </div>
+            <div class="info-produto">
+                Quantidade: {{ object.quantidade}}
             </div>
             <div class="mt-4">
                 <a href="{% if user.is_authenticated %}https://wa.me/{{ object.numero_telefone }}?text=Tenho%20interesse%20em%20comprar%20seu%20produto%20anunciado%20na%20HireMusic{% else %}{% url 'hmcontrol:login' %}{% endif %}">

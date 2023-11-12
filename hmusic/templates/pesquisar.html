@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block titulo %}
 Pesquisa de Filmes
 {% endblock %}
 
 {% block content %}
+
     <main class='bg-primary_black min-h-screen w-full border-gray-600 border-b-8'>
-        <section class='bg-primary_black  min-h-screen flex justify-center py-10'>
+        <section class='bg-primary_black  min-h-screen flex justify-center py-10' style="background-image: url('{% static 'images/FundoTcc.jpg' %}');background-size: cover">
             <div class="p-8 w-10/12 relative" >
                 <h2 class="text-gray-200 text-2xl font-medium">
                     Resultados da Busca
