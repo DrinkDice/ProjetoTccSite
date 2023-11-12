@@ -13,7 +13,18 @@
     </a>
 
 
-
+    <style>
+        .button-usual{
+            color: white;
+            background-color:rgb(71, 33, 6);
+            border-radius: 10px;
+            width: 60px;
+            height: 40px;
+        }
+        .button-usual:hover{
+            background-color: rgb(50, 20, 0);
+        }
+    </style>
 
     <div class="ml-auto d-flex align-items-center"> <!-- Isso empurra os elementos para a direita -->
         <!-- Caixa de pesquisa à direita -->
@@ -28,7 +39,7 @@
         {% if user.is_authenticated %}
         <div class="mr-2">
             <a href="{% url 'hmcontrol:logout' %}">
-                <button class="bg-red-600 text-white py-1 px-3 rounded-md border border-black">
+                <button class="button-usual">
                     Logout
                 </button>
             </a>
@@ -36,7 +47,7 @@
 
         <div class="mr-2">
             <a href="{% url 'hmcontrol:conta' user.pk %}">
-                <button class="bg-red-600 text-#472106 py-1 px-3 rounded-md border border-black">
+                <button class="button-usual">
                     Conta
                 </button>
             </a>
@@ -44,7 +55,7 @@
         {% else %}
         <div class="mr-2">
             <a href="{% url 'hmcontrol:login' %}">
-                <button class="bg-red-600 text-white py-1 px-3 rounded-md border border-black">
+                <button class="button-usual">
                     Login
                 </button>
             </a>
