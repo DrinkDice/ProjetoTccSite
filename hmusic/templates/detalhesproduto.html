@@ -18,13 +18,14 @@ Hire Music
         <h1 class="text-3xl font-semibold">{{ object.titulo }}</h1>
     </div>
 
-    <div class="bg-white rounded-lg p-6 shadow-md flex" style="height: 600px;">
+    <div class="bg-gray-100 rounded-lg p-6 shadow-md flex relative" style="height: 600px;">
         <div class="w-1/2 p-4 ml-12" style="flex: none;">
-            <div class="rounded-lg overflow-hidden" style="width: 400px;">
+            <div class="rounded-lg overflow-hidden" style="width: 400px; border: 2px solid #000;">
                 <img src="{{ object.thumb.url }}" class="w-full object-cover" alt="{{ object.titulo }}">
             </div>
         </div>
-        <div class="w-1/2 p-4">
+        <div class="border-l-2 border-black"></div>
+        <div class="w-1/2 p-4 relative">
             <div class="info-produto">
                 Nome: {{ object.titulo }}
             </div>
@@ -41,8 +42,18 @@ Hire Music
                     </button>
                 </a>
             </div>
+            {% if user.is_authenticated and object.usuario == user %}
+                <div class="absolute top-4 right-4">
+                    <a href="{% url 'hmcontrol:editarinstrumento' object.id %}"> <!--alterar aqui-->
+                        <button class="bg-blue-600 text-white py-2 px-4 rounded-md">
+                            Editar Instrumento
+                        </button>
+                    </a>
+                </div>
+            {% endif %}
         </div>
     </div>
+
 
 
 
