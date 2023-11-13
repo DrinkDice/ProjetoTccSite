@@ -75,17 +75,6 @@ h1 {
   }
 }
 
-.button-usual-conta{
-            color: white;
-            background-color:rgb(71, 33, 6);
-            border-radius: 10px;
-            width: 85px;
-            height: 35px;
-        }
-        .button-usual-conta:hover{
-            background-color: rgb(50, 20, 0);
-        }
-
 // Remove the arrow for Mobile
 @media only screen and (max-width: 600px) {
   a.arrow__btn {
@@ -110,22 +99,28 @@ h1 {
                     <div class="row">
                         <div class="col-md-3">
                             <!-- Avatar do Usuário -->
-                            <div class="bg-gray-300 w-32 h-32 rounded-full mx-auto"></div>
+                            <div class="w-32 h-32 rounded-full mx-auto flex items-center justify-center">
+                                <img src="{% static 'images/usuario.avif' %}" alt="Imagem do Usuário" class="w-full h-full object-contain rounded-full">
+                            </div>
+
                         </div>
                         <div class="col-md-9">
                             <!-- Informações do Usuário -->
-                            <h2 class="text-2xl font-bold">Nome do Usuário</h2>
-                            <p>Email: usuario@exemplo.com</p>
-                            <!-- Outras informações do usuário -->
+                            <div class="info-produto">
+                                Nome: {{ user.username }}
+                            </div>
+                            <div class="info-produto">
+                                Email: {{ user.email }}
+                            </div>
                         </div>
                         <div class="col-md-12 mt-3">
                             <a href="{% url 'hmcontrol:editarperfil' user.pk %}" class="mr-3">
-                                <button class="button-usual-conta">
+                                <button class="bg-red-600 text-white py-1 px-3 rounded-md">
                                     Editar Perfil
                                 </button>
                             </a>
                             <a href="{% url 'hmcontrol:criarinstrumento' %}" class="mr-3">
-                                <button class="button-usual-conta">
+                                <button class="bg-red-600 text-white py-1 px-3 rounded-md">
                                     Anunciar
                                 </button>
                             </a>
@@ -143,7 +138,7 @@ h1 {
             {{ request.user.instrumentos_vistos.all }}
         </section>-->
 
-        <section class='bg-primary_black flex justify-center py-10'>
+    <section class='bg-primary_black flex justify-center py-10'>
             <div class="p-8 w-10/12 relative" >
                 <h2 class="text-gray-200 text-2xl font-medium">
                     Historico de Acessos
@@ -182,6 +177,44 @@ h1 {
 
             </div>
         </section>
+        <section class='bg-primary_black flex justify-center py-10'>
+        <div class="p-8 w-10/12 relative">
+            <h2 class="text-gray-200 text-2xl font-medium">
+                Seus Anuncios
+            </h2>
+            <div class="wrapper">
+                <section id="section1anuncio" class="flex flex-nowrap items-center justify-center space-x-8">
+                    <a href="#section2anuncio" class="arrow__btn text-6xl page">‹</a>
+                    {% for instrumento in instrumentos_criados %}
+                        {% if forloop.counter < 5 %}
+                            <div class="item h-64 w-1/4 m-4">
+                                <a href="{% url 'hmcontrol:detalhesproduto' instrumento.id %}">
+                                    <img src="{{ instrumento.thumb.url }}" class="rounded-md w-full h-full object-cover">
+                                </a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    <a href="#section2anuncio" class="arrow__btn text-6xl">›</a>
+                </section>
+                {% if instrumentos_criados|length > 4 %}
+                    <section id="section2anuncio" class="flex flex-nowrap items-center justify-center">
+                        <a href="#section1anuncio" class="arrow__btn text-6xl">‹</a>
+                        {% for instrumento in instrumentos_criados %}
+                            {% if forloop.counter > 5 %}
+                                <div class="item h-64 w-1/4 m-4">
+                                    <a href="{% url 'hmcontrol:detalhesproduto' instrumento.id %}">
+                                        <img src="{{ instrumento.thumb.url }}" class="rounded-md w-full h-full object-cover">
+                                    </a>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        <a href="#section1anuncio" class="arrow__btn text-6xl">›</a>
+                    </section>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
 </main>
 
 <style>
