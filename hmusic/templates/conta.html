@@ -81,6 +81,16 @@ h1 {
     display:none;
   }
 }
+    .button-usual-conta{
+            color: white;
+            background-color:rgb(71, 33, 6);
+            border-radius: 10px;
+            width: 85px;
+            height: 35px;
+        }
+        .button-usual-conta:hover{
+            background-color: rgb(50, 20, 0);
+        }
 </style>
 {% endblock %}
 
@@ -115,12 +125,12 @@ h1 {
                         </div>
                         <div class="col-md-12 mt-3">
                             <a href="{% url 'hmcontrol:editarperfil' user.pk %}" class="mr-3">
-                                <button class="bg-red-600 text-white py-1 px-3 rounded-md">
+                                <button class="button-usual-conta">
                                     Editar Perfil
                                 </button>
                             </a>
                             <a href="{% url 'hmcontrol:criarinstrumento' %}" class="mr-3">
-                                <button class="bg-red-600 text-white py-1 px-3 rounded-md">
+                                <button class="button-usual-conta">
                                     Anunciar
                                 </button>
                             </a>
