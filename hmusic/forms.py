@@ -55,3 +55,20 @@ class CriarInstrumentoForm(forms.ModelForm):
                 'O número de telefone deve estar no formato internacional, por exemplo, +1234567890.')
 
         return numero_telefone
+
+class EditarInstrumentoForm(forms.ModelForm):
+    class Meta:
+        model = Instrumentos
+        fields = ('titulo', 'thumb', 'descricao', 'categoria', 'quantidade', 'preco', 'numero_telefone')
+
+    def clean_titulo(self):
+        titulo = self.cleaned_data.get('titulo')
+        # Adicione lógica de validação personalizada para o campo 'titulo', se necessário
+        # Por exemplo, certifique-se de que o título não contenha caracteres especiais indesejados
+        return titulo
+
+    def clean_numero_telefone(self):
+        numero_telefone = self.cleaned_data.get('numero_telefone')
+        # Adicione lógica de validação personalizada para o campo 'numero_telefone', se necessário
+        # Por exemplo, certifique-se de que o número de telefone esteja no formato desejado
+        return numero_telefone
