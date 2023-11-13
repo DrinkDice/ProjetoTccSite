@@ -1,10 +1,12 @@
 # Create your views here.
 
-from django.shortcuts import render, redirect, reverse, HttpResponseRedirect
+from django.shortcuts import render, redirect, reverse, HttpResponseRedirect, get_object_or_404
 from .models import Instrumentos, Usuario
-from .forms import CriarContaForm, CriarInstrumentoForm
+from .forms import CriarContaForm, CriarInstrumentoForm, EditarInstrumentoForm
 from django.views.generic import TemplateView, ListView, DetailView, FormView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.urls import reverse_lazy
+
 
 
 class HomePage(TemplateView):
@@ -20,6 +22,21 @@ class Paginavendedor(LoginRequiredMixin, TemplateView):
 
 class Conta(LoginRequiredMixin, TemplateView):
     template_name = 'conta.html'
+
+    def get_context_data(self, **kwargs):
+        # Obter o usuário logado
+        usuario = self.request.user
+
+        # Obter a lista de instrumentos criados por esse usuário, ordenados por data de criação (do mais novo ao mais antigo)
+        instrumentos_criados = usuario.instrumentos.all().order_by('-data_criacao')
+
+        # Adicionar os dados ao contexto
+        context = super().get_context_data(**kwargs)
+        context['usuario'] = usuario
+        context['instrumentos_criados'] = instrumentos_criados
+
+        return context
+
 
 
 class Paginaperfil(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -102,6 +119,17 @@ class CriarInstrumento(LoginRequiredMixin, FormView):
         return reverse('hmcontrol:conta', args=[self.request.user.pk])
 
 
+class EditarInstrumento(LoginRequiredMixin, UpdateView):
+    template_name = 'editarinstrumento.html'
+    model = Instrumentos
+    form_class = EditarInstrumentoForm
+
+    def get_queryset(self):
+        # Certifique-se de que apenas o usuário autenticado pode editar seus próprios instrumentos
+        return Instrumentos.objects.filter(usuario=self.request.user)
+
+    def get_success_url(self):
+        return reverse('hmcontrol:detalhesproduto', args=[self.object.id])
 
 class Pesquisar(ListView):
     template_name = "pesquisar.html"
